@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  portefolio:
+#    env_file: docker/.env-non-dev
+    image: "portefolio:1.0"
+    container_name: protefolio_app
+#    command: ["/app/docker/docker-bootstrap.sh", "app-gunicorn"]
+    user: "root"
+    restart: unless-stopped
+    ports:
+      - 5888:5888
+
