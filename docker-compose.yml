@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+
+#  portefolio:
+##    env_file: docker/.env-non-dev
+#    image: "portefolio:1.0"
+#    container_name: protefolio_app
+##    command: ["/app/docker/docker-bootstrap.sh", "app-gunicorn"]
+#    user: "root"
+#    restart: unless-stopped
+#    ports:
+#      - 5888:5888
+
+  #### Flask app
+  back:
+    restart: always
+
+  ####### Build front modules
+  front:
+    volumes:
+      - shared:/app/
+
+  ###### Server Nginx
+  nginx:
+    restart: always
+#    volumes:
+#      - shared:/usr/share/nginx/html
+    depends_on:
+      - front
+
+volumes:
+  shared: {}
