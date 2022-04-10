@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+
+  nginx:
+    build: ./nginx/
+    ports:
+      - "8080:80"
+
+  front:
+    build: ./front/
+
+  back:
+    build: ./back/
+    ports:
+      - "5888:5888"
+

@@ -20,6 +20,31 @@ compile-requirements:
 lint: # Lint the project
 	@python -m tox -e lint
 
+
+CONTAINER_PREFIX=portefolio
+DC=docker-compose -p ${CONTAINER_PREFIX}
+
+build: ## Build the containers and pull FROM statements
+	${DC} build
+
+rebuild: ## Rebuild containers
+	${MAKE} down build up
+
+start: ## Start the containers
+	${DC} start
+
+stop: ## Stop the containers
+	${DC} stop
+
+up: ## Up the containers
+	${DC} up -d
+
+down: ## Down the containers (keep volumes)
+	${DC} down
+
+destroy: ## Destroy the containers, volumes, networks…
+	${DC} down -v --remove-orphan
+
 # test: # Run tests
 # 	@sed -e 's/=.*/=1/' "./config/features.env" > "./config/features-tests.env"
 # 	@sed -a && source "./config/features-tests.env" && set +a $$ unset "REQUESTS_CA_BUNDLE" && python -m tox -e test

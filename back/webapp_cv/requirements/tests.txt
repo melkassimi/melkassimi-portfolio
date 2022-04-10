@@ -1,0 +1,9 @@
+black
+faker
+flake8
+pytest
+pytest-cov
+pytest-mock
+pytest-random-order
+tox
+tavern[pytest]
